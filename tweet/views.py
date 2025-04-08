@@ -4,10 +4,12 @@ from .forms import TweetForm , UserRegistrationForm
 from django.shortcuts import get_object_or_404,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
+from django.http import HttpResponse
 
 
 # from django.http import HttpResponse
-
+def home(request):
+    return HttpResponse("🎉 Welcome to the Homepage!")
 # Create your views here.
 
 def index(request):

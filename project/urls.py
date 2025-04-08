@@ -20,12 +20,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.urls import views as auth_views
 from django.contrib.auth.views import LoginView
+from tweet.views import home 
 
 
 urlpatterns = [
+    path('', home, name='home'), 
     path('admin/', admin.site.urls),
     path('tweet/', include('tweet.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-     path('accounts/login/', LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('accounts/login/', LoginView.as_view(template_name='registration/login.html'), name='login'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
