@@ -9,7 +9,7 @@ from django.http import HttpResponse
 
 # from django.http import HttpResponse
 def home(request):
-    return HttpResponse("🎉 Welcome to the Homepage!")
+    return render(request, 'index.html')
 # Create your views here.
 
 def index(request):
