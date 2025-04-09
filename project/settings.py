@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tweet',
+    
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,21 @@ STATICFILES_DIRS =[os.path.join(BASE_DIR, 'static')]
 LOGIN_URL = '/accounts/login'
 LOGIN_REDIRECT_URL = '/tweet'
 LOGOUT_REDIRECT_URL = '/tweet'
+
+INSTALLED_APPS += ['storages']
+
+# AWS Credentials
+AWS_ACCESS_KEY_ID = 'AKIARZ6X3ZDKQXGUEBWQ'
+AWS_SECRET_ACCESS_KEY = 'c9mkjg8YtRYty+qesX5g2SVrVUfX9bKGYSOW8PTK'
+AWS_STORAGE_BUCKET_NAME = 'tweetbar-media-files'
+AWS_S3_REGION_NAME = 'Europe (Stockholm) eu-north-1'  # e.g., 'us-west-2'
+
+# Optional: Use this if you want your URLs to be shorter
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+# Set default file storage to use S3
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# Media URL
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com'
+

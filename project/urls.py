@@ -21,9 +21,13 @@ from django.conf.urls.static import static
 from django.contrib.auth.urls import views as auth_views
 from django.contrib.auth.views import LoginView
 from tweet.views import home 
+from tweet import views
+
 
 
 urlpatterns = [
+    path('tweet/', views.tweet_list, name='tweet_list'),
+    path('', views.create_tweet, name='create_tweet'),
     path('', home, name='home'), 
     path('admin/', admin.site.urls),
     path('tweet/', include('tweet.urls')),

@@ -5,6 +5,33 @@ from django.shortcuts import get_object_or_404,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 from django.http import HttpResponse
+from .prompts import random_prompt
+from django.shortcuts import render
+from .models import Tweet
+
+def create_tweet(request):
+    prompt = random_prompt()
+    print("DEBUG PROMPT:", prompt)  # <- check your terminal for this
+    return render(request, "tweet/create_tweet.html", {"prompt": prompt})
+    
+
+def tweet_list(request):
+    prompt = random_prompt()
+    print("DEBUG PROMPT:", prompt)  # <- check your terminal for this
+    return render(request, "tweet/tweet_list.html", {"prompt": prompt})
+
+def tweet_list(request):
+    prompt = request.GET.get('prompt')  # ✅ Get from URL
+    tweets = Tweet.objects.all().order_by('-created_at')
+
+    return render(request, 'tweet_list.html', {
+        'tweets': tweets,
+        'prompt': prompt
+    })
+
+
+
+
 
 
 # from django.http import HttpResponse

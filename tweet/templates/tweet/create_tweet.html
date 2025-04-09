@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% block title %}
+anubhav ishan
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center text-white"> Welcome to TweetBar !!</h1>
+
+<div class="prompt-box">
+   {{ prompt }}
+</div>
+
+
+{% comment %} <p style="color: green;">Prompt: {{ prompt }}</p> {% endcomment %}
+<!-- Inside create_tweet.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Tweet</title>
+    <style>
+        .prompt-box {
+            background: linear-gradient(135deg,rgb(48, 13, 247),rgb(58, 248, 0));
+            color:rgb(243, 248, 244);
+            font-size: 1.4rem;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            width: 80%;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .prompt-box:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+
+
+    <div class="page-description">
+        <p>
+          Choose your prompt and go to Tweet Home button to create a tweet.
+        </p>
+      </div>
+    <style>
+        .page-description { 
+            position: absolute;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            background:rgb(52, 52, 52); /* light acoustic blue */
+            color:rgb(176, 181, 119);       /* deep navy text */
+            padding: 7px 0px;
+            border-radius: 20px;
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+            font-size: 1rem;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            font-family: 'Segoe UI', sans-serif;
+          }
+        </style>  
+
+        <div class="ishan">
+            <p>
+              Created by Anubhav Ishan
+            </p>
+        </div>
+        <style>
+            .ishan{
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%); 
+            color:rgb(120, 117, 117); font-size: 1rem;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            font-family: 'Segoe UI', sans-serif;
+
+            }
+        </style>
+
+</head>
+
+
+
+
+<button onclick="location.reload()" class="btn btn-outline-info mt-2">
+    🔄 Get another prompt
+</button>
+
+
+
+
+{% endblock %}
