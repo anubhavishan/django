@@ -13,6 +13,14 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 
+import dj_database_url
+from decouple import config
+
+
+from dotenv import load_dotenv
+load_dotenv()
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -40,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tweet',
+    'storages',
     
 ]
 
@@ -84,6 +93,10 @@ DATABASES = {
     }
 }
 
+DATABASES = {
+    'default': dj_database_url.config(default=config('DATABASE_URL'))
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -126,8 +139,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL ='/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL ='/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_URL='static/'
 STATICFILES_DIRS =[os.path.join(BASE_DIR, 'static')]
@@ -137,20 +150,23 @@ LOGIN_URL = '/accounts/login'
 LOGIN_REDIRECT_URL = '/tweet'
 LOGOUT_REDIRECT_URL = '/tweet'
 
-INSTALLED_APPS += ['storages']
+# INSTALLED_APPS += ['storages']
 
-# AWS Credentials
-AWS_ACCESS_KEY_ID = 'AKIARZ6X3ZDKQXGUEBWQ'
-AWS_SECRET_ACCESS_KEY = 'c9mkjg8YtRYty+qesX5g2SVrVUfX9bKGYSOW8PTK'
-AWS_STORAGE_BUCKET_NAME = 'tweetbar-media-files'
-AWS_S3_REGION_NAME = 'Europe (Stockholm) eu-north-1'  # e.g., 'us-west-2'
 
-# Optional: Use this if you want your URLs to be shorter
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+# AWS_ACCESS_KEY_ID =  os.getenv('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY =  os.getenv('AWS_SECRET_ACCESS_KEY') 
+# AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+# AWS_S3_REGION_NAME =  os.getenv('AWS_S3_REGION_NAME')
+# AWS_DEFAULT_ACL = 'public-read'
 
-# Set default file storage to use S3
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-# Media URL
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com'
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
+# # Media URL
+# AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com'
+
+# MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
+
+# import logging
+
+# logging.basicConfig(level=logging.DEBUG)
