@@ -47,9 +47,10 @@
             </ul>
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button style="margin: 5px;" class="btn btn-outline-success" type="submit">Search</button>
+              <button style="margin: 5px;" class="btn btn-outline-success mx-4" type="submit">Search</button>
             </form>
-            <a href="{% url 'tweet_list' %}" class="btn btn-primary">Tweet Home</a>
+            <a href="{% url 'tweet_list' %}" class="btn btn-info">Tweet Home</a>
+            <a href="{% url 'create_tweet' %}" class="btn btn-warning mx-2">Prompts</a>
             {% if user.is_authenticated %}
             <form method="post" action="{% url 'logout' %}">
                 {% csrf_token %}
@@ -59,6 +60,7 @@
             {% else %}
             <a href="{% url 'register' %}" class="btn btn-success mx-2">Register</a>
             <a href="{% url 'login' %}" class="btn btn-primary mx-2">Login</a>
+            
 
 
             {% endif %}

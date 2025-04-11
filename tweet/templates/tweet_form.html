@@ -9,10 +9,16 @@ anubhav ishan
 <h1 class="text-center text-white"> Welcome to my page !!</h1>
 
 <h2 class="text-white">
+    
     {%if form.instance.pk %}
     Edit tweet
     {% else %}
     Create tweet
+    <h2>Your Prompt:</h2>
+<div class="prompt-display">
+    <p>{{ prompt }}</p>
+</div>
+
     {% endif %}
     <form method="post" enctype="multipart/form-data" class="form">
         {% csrf_token %}

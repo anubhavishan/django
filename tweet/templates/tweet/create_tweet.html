@@ -1,15 +1,22 @@
 {% extends "layout.html" %}
 
 {% block title %}
-anubhav ishan
+Tweet Bar
 {% endblock %}
 
 {% block content %}
 <h1 class="text-center text-white"> Welcome to TweetBar !!</h1>
 
-<div class="prompt-box">
+{% comment %} <div class="prompt-box">
    {{ prompt }}
-</div>
+</div> {% endcomment %}
+
+<a href="{% url 'create_tweet' %}?prompt={{ prompt }}" style="text-decoration: none;">
+  <div class="prompt-box" style="cursor: pointer;">
+    <p>🕰️ {{ prompt }}</p>
+  </div>
+</a>
+
 
 
 {% comment %} <p style="color: green;">Prompt: {{ prompt }}</p> {% endcomment %}

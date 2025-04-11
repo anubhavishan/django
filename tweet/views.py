@@ -10,6 +10,7 @@ from django.shortcuts import render
 from .models import Tweet
 
 def create_tweet(request):
+    # prompt = random_prompt()
     prompt = random_prompt()
     print("DEBUG PROMPT:", prompt)  # <- check your terminal for this
     return render(request, "tweet/create_tweet.html", {"prompt": prompt})
@@ -45,7 +46,9 @@ def index(request):
 # def index(request):
 #     return HttpResponse("Hello from the Tweet app!")
 
-
+def tweet_list(request):
+    tweets = Tweet.objects.all().order_by('-created_at')
+    return render(request, 'tweet_list.html',{'tweets':tweets})
 
 
 @login_required
