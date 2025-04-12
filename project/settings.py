@@ -16,6 +16,11 @@ import os
 import dj_database_url
 from decouple import config
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+import cloudinary_storage
+
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -49,6 +54,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tweet',
     'storages',
+    'cloudinary',
+    'cloudinary_storage',
+
     
 ]
 
@@ -139,8 +147,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# MEDIA_URL ='/media/'
+MEDIA_URL ='/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT = None
 
 STATIC_URL='static/'
 STATICFILES_DIRS =[os.path.join(BASE_DIR, 'static')]
@@ -170,3 +179,13 @@ LOGOUT_REDIRECT_URL = '/tweet/'
 # import logging
 
 # logging.basicConfig(level=logging.DEBUG)
+
+
+cloudinary.config(
+    cloud_name='dh60xfkpv',
+    api_key='446577757256793',
+    api_secret='PMPhEHOXzZQSpi1pvMVJ_9YK3Fc'
+)
+
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

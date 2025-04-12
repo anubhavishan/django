@@ -20,7 +20,7 @@ anubhav ishan
 </div>
 
     {% endif %}
-    <form method="post" enctype="multipart/form-data" class="form">
+    <form method="post" enctype="multipart/form-data" class="form text-white">
         {% csrf_token %}
         {{ form.as_p}}
         <button class="btn btn-warning" type="submit">Submit</button>
