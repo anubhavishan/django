@@ -16,10 +16,9 @@ import os
 import dj_database_url
 from decouple import config
 
-# import cloudinary
+import cloudinary
 import cloudinary.uploader
 import cloudinary.api
-import cloudinary_storage
 import cloudinary_storage
 
 
